@@ -1,0 +1,82 @@
+{
+  "name": "wxwork-screenshot",
+  "version": "1.0.0",
+  "description": "企业微信风格截图工具（Electron + React + TS）",
+  "main": "./out/main/index.js",
+  "author": "sunwebgo",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunwebgo/wxwork-screenshot.git"
+  },
+  "homepage": "https://github.com/sunwebgo/wxwork-screenshot#readme",
+  "bugs": {
+    "url": "https://github.com/sunwebgo/wxwork-screenshot/issues"
+  },
+  "keywords": [
+    "electron",
+    "screenshot",
+    "wechat-work",
+    "wxwork",
+    "pin",
+    "ocr",
+    "windows"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "typecheck": "tsc -b && echo typecheck ok",
+    "dist": "electron-vite build && electron-builder --win"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "build": {
+    "appId": "com.wxwork.screenshot",
+    "productName": "WxWorkScreenshot",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "out/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "resources",
+        "to": ".",
+        "filter": [
+          "ocr.ps1",
+          "screen-capture.ps1",
+          "tray.png"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "icon": "build/icon.png",
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "wxwork-screenshot.exe"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0"
+  }
+}
